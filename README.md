@@ -1,0 +1,1 @@
+# typescript-nest-rest-client
