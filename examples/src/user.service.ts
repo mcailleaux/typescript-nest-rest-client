@@ -1,25 +1,3 @@
-# typescript-nest-rest-client
-
-Nest HTTP client with Typescript Declarative Annotations, Observables, Interceptors and Timeouts.
-This package is production ready.
-
-This is an implementation for nest of typescript-rest-client : https://www.npmjs.com/package/typescript-rest-client
-
-## Installation
-
-```sh
-yarn add typescript-rest-client typescript-nest-rest-client
-```
-
-or
-
-```sh
-npm install typescript-rest-client typescript-nest-rest-client --save
-```
-
-## Example
-
-```ts
 import { Observable } from 'rxjs';
 import {
   Body,
@@ -82,7 +60,7 @@ export class UserService extends RestClient {
   @Put(() => `/${UserService.url}/{id}`)
   public editUser(
     @Path('id') id: number,
-    @Body user: IUser
+    @Body user: IUser,
   ): Observable<IUser> {
     return null;
   }
@@ -92,4 +70,3 @@ export class UserService extends RestClient {
     return null;
   }
 }
-```

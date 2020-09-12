@@ -1,6 +1,6 @@
 {
   "name": "typescript-nest-rest-client",
-  "version": "1.0.5-SNAPSHOT",
+  "version": "1.0.6-SNAPSHOT",
   "description": "NEST HTTP client with Typescript Declarative Annotations, Observables, Interceptors and Timeouts.",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/mcailleaux/typescript-nest-rest-client#readme",
   "dependencies": {
-    "typescript-rest-client": "^1.0.28-SNAPSHOT"
+    "typescript-rest-client": "^1.0.30-SNAPSHOT"
   },
   "devDependencies": {
     "@nestjs/common": "^7.4.4",
