@@ -1,0 +1,66 @@
+image: docker-repository-no.asi.fr/asi/ci-builder-node14:1.0
+
+stages:
+  - build
+  - quality
+  - publish_release
+
+variables:
+  GIT_STRATEGY: fetch
+
+build:
+  extends: .build
+
+quality:
+  stage: quality
+  script:
+    - npm run lint
+  artifacts:
+    paths:
+      - dist
+
+publish:
+  stage: publish_release
+  script:
+    - npm-cli-login
+    - sh ./package-ci.sh
+  rules:
+    - if: '$CI_COMMIT_TAG == null' #all not tags
+      when: manual
+    - if: '$CI_COMMIT_TAG != null' #only on tags
+      when: on_success
+
+release_patch:
+  extends: .release
+  variables:
+    VERSION: patch
+
+release_minor:
+  extends: .release
+  variables:
+    VERSION: minor
+
+release_major:
+  extends: .release
+  variables:
+    VERSION: major
+
+.build:
+  stage: build
+  before_script:
+    - npm ci --unsafe-perm
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - node_modules
+      - dist
+    expire_in: 1 day
+
+.release:
+  stage: publish_release
+  when: manual
+  script:
+    - /scripts/release.sh $VERSION
+  only:
+    - /^master$/

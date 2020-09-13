@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/mcailleaux/typescript-nest-rest-client#readme",
   "dependencies": {
-    "typescript-rest-client": "^1.0.30-SNAPSHOT"
+    "typescript-rest-client": "^1.0.34"
   },
   "devDependencies": {
     "@nestjs/common": "^7.4.4",
