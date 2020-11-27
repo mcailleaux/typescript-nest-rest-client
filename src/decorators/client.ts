@@ -1,5 +1,6 @@
 import { Client as GenericClient } from 'typescript-rest-client';
 import { HttpHeaders } from '../http-headers';
+import { HttpParams } from '../http-params';
 
 export function Client(args: {
   serviceId?: () => string;
@@ -11,14 +12,14 @@ export function Client(args: {
       ...args,
       newHttpHeaders: (defaultHeaders?: { [name: string]: string }) =>
         new HttpHeaders(defaultHeaders),
-      newHttpParams: () => new URLSearchParams(),
+      newHttpParams: () => new HttpParams(),
       newHttpRequest: (
         method: string,
         resUrl: string,
         body: any,
         init: {
           headers: HttpHeaders;
-          params: URLSearchParams;
+          params: HttpParams;
           withCredentials: boolean;
         }
       ) =>
@@ -28,7 +29,7 @@ export function Client(args: {
           body: body,
           data: body,
           headers: init.headers.headers,
-          params: init.params,
+          params: init.params.params,
           withCredentials: init.withCredentials,
         },
       defaultResponseBody: (res) => res.data,
