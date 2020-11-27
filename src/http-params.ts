@@ -4,12 +4,12 @@ export class HttpParams implements IHttpParams {
   public params = new URLSearchParams();
 
   public append(param: string, value: string): any {
-    this.params.append(name, value);
+    this.params.append(param, value);
     return this;
   }
 
   public set(param: string, value: string): any {
-    this.params.set(name, value);
+    this.params.set(param, value);
     return this;
   }
 }
